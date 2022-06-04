@@ -1,10 +1,14 @@
 import React from 'react';
+import OrderPage from "./pages/OrderPage/OrderPage";
+import {OrderContextProvider} from "./contexts/OrderContext";
 
 function App() {
   return (
-    <>
-      <h1> HELLO WORLD </h1>
-    </>
+    <div style={{padding: "4rem"}}>
+        <OrderContextProvider>
+            <OrderPage />
+        </OrderContextProvider>
+    </div>
   );
 }
 

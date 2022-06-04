@@ -1,6 +1,7 @@
-import React, {FC} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 
-const Products:FC<{name:string, imagePath:string}> = ({name ,imagePath}) => {
+const Products:FC<{name:string, imagePath:string, updateItemCount: (itemName:string, newItemCount:string) => any}> = ({name ,imagePath, updateItemCount}) => {
+
     return(
         <div style={{textAlign:"center"}}>
             <img
@@ -15,7 +16,8 @@ const Products:FC<{name:string, imagePath:string}> = ({name ,imagePath}) => {
                     type="number"
                     name="quantitiy"
                     min="0"
-                    defaultValue='0'/>
+                    defaultValue='0'
+                    onChange={(e) => updateItemCount(name, e.target.value)}/>
             </form>
         </div>
 

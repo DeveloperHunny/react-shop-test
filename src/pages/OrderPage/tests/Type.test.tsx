@@ -32,5 +32,13 @@ test("테스트 에러가 발생했을 때 에러 메세지 발생", async ()=> 
     render(<Type orderType="products"/>);
     const errorBanner = await screen.findByTestId("error-banner");
     expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
-
 });
+
+test("서버에서 option 정보 가져오기",  async ()=> {
+    render(<Type orderType="options"/>);
+
+    const optionCheckboxes = await screen.findAllByRole("checkbox");
+
+    expect(optionCheckboxes).toHaveLength(2);
+});
+
