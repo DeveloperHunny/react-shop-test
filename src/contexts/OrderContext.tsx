@@ -55,7 +55,7 @@ export const OrderContextProvider:FC<{children : ReactElement}> = ({children}) =
     });
 
 
-
+    0
     useEffect(() => {
         const productsTotal = calculateSubtotal('products', orderCounts);
         const optionsTotal = calculateSubtotal('options', orderCounts);
@@ -72,9 +72,10 @@ export const OrderContextProvider:FC<{children : ReactElement}> = ({children}) =
     const value = useMemo(() => {
         const updateItemCount = (itemName : string, newItemCount : string, orderType : OrderKeyType) => {
             console.log("Update item count");
-            const orderCountsMap = orderCounts[orderType];
+            const orderCountsTemp = {...orderCounts};
+            const orderCountsMap = orderCountsTemp[orderType];
             orderCountsMap.set(itemName, parseInt(newItemCount));
-            setOrderCounts({...orderCounts});
+            setOrderCounts({...orderCountsTemp});
         }
         return { orderDatas : {orderCounts, totals} , updateItemCount}
     }, [orderCounts, totals]);
